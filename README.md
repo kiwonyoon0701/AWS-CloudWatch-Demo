@@ -10,7 +10,7 @@ This demo shows you followings
 ![Alt](images/CW-Overview.png "CloudWatch Overview")
 
 # Demo 
-## [Custom Metric Upload](doc/CustomMetricUpload.md)
+## [Custom Metric Upload](docs/CustomMetricUpload.md)
 ## CloudWatch Logs & Filtering & Notification
 ## Upload Apache Log into CloudWatch Logs
 ## CloudWatch Events with Lambda 
