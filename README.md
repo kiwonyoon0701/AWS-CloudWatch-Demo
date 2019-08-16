@@ -8,3 +8,10 @@ This demo shows you followings
 3. CloudWatch Logs - Uploading apache logs into CloudWatch Repository
 
 
+# Demo 
+## [Custom Metric Upload](doc/CustomMetricUpload.md)
+## CloudWatch Logs & Filtering & Notification
+## Upload Apache Log into CloudWatch Logs
+## CloudWatch Events with Lambda 
+## AutoScaling with CloudWatch
+
