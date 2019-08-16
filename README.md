@@ -7,6 +7,7 @@ This demo shows you followings
    3. Create Alarm to notify IT admin regarding specific error occured
 3. CloudWatch Logs - Uploading apache logs into CloudWatch Repository
 
+![Alt](images/CW-Overview.png "CloudWatch Overview")
 
 # Demo 
 ## [Custom Metric Upload](doc/CustomMetricUpload.md)
