@@ -5,12 +5,12 @@
 2. "Create policy"
 3. Service : CloudWatch
 4. Actions
-5. Access level
-6. Write
-7. Check PutMetricData
-8. Click "Review Policy"
-9. Review Policy 
-10. Name : 
+   1. Access level
+   2. Write
+      1. Check PutMetricData
+5. Click "Review Policy"
+6. Review Policy 
+7.  Name : 
 ```bash
 PutMetricRole20190815 
 ```
