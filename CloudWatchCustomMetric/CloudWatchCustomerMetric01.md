@@ -62,3 +62,38 @@ ubuntu@ip-10-100-1-128:~$ stress-ng --vm-bytes $(awk '/MemAvailable/{printf "%d\
 **EC2 memory Usage**
 
 <kbd> ![GitHub Logo](images/2.png) </kbd>
+
+**Using custom metric to send multiple items**
+
+```
+ubuntu@ip-10-100-1-128:~$ cp mem.sh total.sh
+
+ubuntu@ip-10-100-1-128:~$ cat total.sh 
+#!/bin/bash
+CPU_USAGE=$(top -b -n2 -p 1 | fgrep "Cpu(s)" | tail -1 | awk -F'id,' -v prefix="$prefix" '{ split($1, vs, ","); v=vs[length(vs)]; sub("%", "", v); printf "%s%.1f%%\n", prefix, 100 - v }')
+USEDMEMORY=$(free -m | awk 'NR==2{printf "%.2f\t", $3*100/$2 }')
+DISK_USAGE=$(df -h / | tail -1 | awk ' { print $5 }')
+#TCP_CONN=$(netstat -an | wc -l)
+#TCP_CONN_PORT_80=$(netstat -an | grep 80 | wc -l)
+#IO_WAIT=$(iostat | awk 'NR==4 {print $5}')
+CPU_USAGE=`echo $CPU_USAGE|sed -e 's/%//g'`
+DISK_USAGE=`echo $DISK_USAGE|sed -e 's/%//g'`
+echo $CPU_USAGE
+echo $USEDMEMORY
+echo $DISK_USAGE
+ 
+aws cloudwatch put-metric-data --metric-name cpu-usage --dimensions Instance=i-047fc1f8cfada0cf7  --namespace "Custom01" --value $CPU_USAGE
+aws cloudwatch put-metric-data --metric-name memory-usage --dimensions Instance=i-047fc1f8cfada0cf7  --namespace "Custom01" --value $USEDMEMORY
+aws cloudwatch put-metric-data --metric-name disk-usage --dimensions Instance=i-047fc1f8cfada0cf7  --namespace "Custom01" --value $DISK_USAGE
+
+ubuntu@ip-10-100-1-128:~$ watch -n 10 ./total.sh
+
+```
+
+**New Custom Namespace-Customer01 Created**
+
+<kbd> ![GitHub Logo](images/3.png) </kbd>
+
+**Show multiple items**
+
+<kbd> ![GitHub Logo](images/4.png) </kbd>
