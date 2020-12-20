@@ -97,3 +97,35 @@ ubuntu@ip-10-100-1-128:~$ watch -n 10 ./total.sh
 **Show multiple items**
 
 <kbd> ![GitHub Logo](images/4.png) </kbd>
+
+**Change Data unit : KB to MB**
+
+```
+ubuntu@ip-10-100-1-128:~$ cat mem2.sh 
+ubuntu@ip-10-100-1-128:~$ cat mem2.sh 
+#!/bin/bash
+USEDMEMORY=$(free -m | awk 'NR==2{printf "%.2f\t", $3*100/$2 }')
+FREEMEMORYKB=$(cat /proc/meminfo |grep MemFree |awk ' { print $2}')
+FREEMEMORYMB=`expr $FREEMEMORYKB / 1024`
+#TCP_CONN=$(netstat -an | wc -l)
+#TCP_CONN_PORT_80=$(netstat -an | grep 80 | wc -l)
+#IO_WAIT=$(iostat | awk 'NR==4 {print $5}')
+ 
+aws cloudwatch put-metric-data --metric-name memory-usage --dimensions Instance=i-047fc1f8cfada0cf7  --namespace "Custom02" --value $USEDMEMORY
+aws cloudwatch put-metric-data --metric-name freememory-KB --dimensions Instance=i-047fc1f8cfada0cf7  --namespace "Custom02" --value $FREEMEMORYKB --unit Kilobytes
+aws cloudwatch put-metric-data --metric-name freememory-MB --dimensions Instance=i-047fc1f8cfada0cf7  --namespace "Custom02" --value $FREEMEMORYMB --unit Megabytes
+#echo $USEDMEMORY
+#echo $FREEMEMORYKB
+#echo $FREEMEMORYMB
+```
+
+
+**Change Data unit : KB to MB**
+
+<kbd> ![GitHub Logo](images/5.png) </kbd>
+
+<kbd> ![GitHub Logo](images/6.png) </kbd>
+
+<kbd> ![GitHub Logo](images/7.png) </kbd>
+
+<kbd> ![GitHub Logo](images/8.png) </kbd>
