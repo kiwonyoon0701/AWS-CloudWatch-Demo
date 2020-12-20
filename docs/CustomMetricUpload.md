@@ -14,3 +14,4 @@
 ```bash
 PutMetricRole20190815 
 ```
+8. Click "Create policy"
