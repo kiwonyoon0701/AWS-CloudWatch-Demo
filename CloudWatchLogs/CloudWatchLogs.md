@@ -1,5 +1,6 @@
-```
+**Install cloudwatch agent and get siganature file**
 
+```
 Attach policy - CloudWatchAgentServerPolicy - to EC role
 
 
@@ -45,9 +46,11 @@ ubuntu@ip-10-100-1-108:/home/ubuntu> sudo dpkg -i -E ./amazon-cloudwatch-agent.d
 ```
 
 **Create Role**
+
 <kbd> ![GitHub Logo](images/1.png) </kbd>
 
 **Attach the role to EC2**
+
 <kbd> ![GitHub Logo](images/2.png) </kbd>
 
 
