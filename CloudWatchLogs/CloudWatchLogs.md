@@ -51,6 +51,8 @@ ubuntu@ip-10-100-1-108:/home/ubuntu> sudo dpkg -i -E ./amazon-cloudwatch-agent.d
 <kbd> ![GitHub Logo](images/2.png) </kbd>
 
 
+**Run cloudwatch agent wizard**
+
 ```
 ubuntu@ip-10-100-1-108:/home/ubuntu> sudo /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-config-wizard
 =============================================================
@@ -280,6 +282,7 @@ Program exits now.
 
 ```
 
+**cloudwatch agent configuration file**
 
 ```
 ubuntu@ip-10-100-1-108:/home/ubuntu> cat /opt/aws/amazon-cloudwatch-agent/bin/config.json
@@ -343,6 +346,8 @@ ubuntu@ip-10-100-1-108:/home/ubuntu> cat /opt/aws/amazon-cloudwatch-agent/bin/co
 ```
 
 
+**Run cloudwatch agent with failure**
+
 ```
 ubuntu@ip-10-100-1-108:/home/ubuntu> sudo /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -a fetch-config -m ec2 -s -c file:/opt/aws/amazon-cloudwatch-agent/bin/config.json
 /opt/aws/amazon-cloudwatch-agent/bin/config-downloader --output-dir /opt/aws/amazon-cloudwatch-agent/etc/amazon-cloudwatch-agent.d --download-source file:/opt/aws/amazon-cloudwatch-agent/bin/config.json --mode ec2 --config /opt/aws/amazon-cloudwatch-agent/etc/common-config.toml --multi-config default
@@ -359,6 +364,8 @@ Configuration validation second phase failed
 ======== Error Log ========
 2020-12-20T09:00:03Z E! [telegraf] Error running agent: Error parsing /opt/aws/amazon-cloudwatch-agent/etc/amazon-cloudwatch-agent.toml, open /usr/share/collectd/types.db: no such file or directory
 ```
+
+**colletd required to run cloudwatch agent**
 
 ```
 https://github.com/awsdocs/amazon-cloudwatch-user-guide/issues/54
@@ -382,6 +389,8 @@ Configuration validation second phase succeeded
 Configuration validation succeeded
 Created symlink /etc/systemd/system/multi-user.target.wants/amazon-cloudwatch-agent.service → /etc/systemd/system/amazon-cloudwatch-agent.service.
 ```
+
+**get htlm from httpd using curl**
 
 ```
 ubuntu@ip-10-100-1-108:/home/ubuntu> curl http://3.34.214.63
